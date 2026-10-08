@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Offline · Corrective</title>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff8f4" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#15100d" />
+    <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
+    <!--
+      Deliberately a standalone page rather than a Next route.
+
+      The service worker serves this for any uncached navigation, which means
+      it is returned under some *other* route's URL. A Next page would then try
+      to hydrate the wrong route against it and throw. Plain HTML with inline
+      styles has nothing to hydrate, and it still renders when the JS chunks
+      are not cached either.
+    -->
+    <style>
+      :root {
+        --bg: #fff8f4;
+        --surface: #f7ebe3;
+        --text: #1f1813;
+        --muted: #8a776c;
+        --accent: #a8450a;
+        --accent-fg: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #15100d;
+          --surface: #221c18;
+          --text: #f0e2d9;
+          --muted: #8e7d73;
+          --accent: #ffb68f;
+          --accent-fg: #4a1800;
+        }
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Manrope, ui-sans-serif, system-ui, -apple-system,
+          "Segoe UI", Roboto, sans-serif;
+        font-weight: 600;
+        text-align: center;
+        -webkit-font-smoothing: antialiased;
+      }
+      .mark { margin-bottom: 20px; }
+      h1 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+      p {
+        margin: 8px 0 0;
+        max-width: 34ch;
+        font-size: 13.5px;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+      a {
+        display: inline-flex;
+        align-items: center;
+        height: 40px;
+        margin-top: 22px;
+        padding: 0 18px;
+        border-radius: 999px;
+        background: var(--accent);
+        color: var(--accent-fg);
+        font-size: 13.5px;
+        font-weight: 800;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <svg class="mark" width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M3.5 15.5H10V8.5h5.5"
+          fill="none"
+          stroke="var(--accent)"
+          stroke-width="2.75"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <circle cx="19.5" cy="8.5" r="2.6" fill="var(--accent)" />
+      </svg>
+      <h1>This page is not available offline</h1>
+      <p>
+        Your corrections and executions are stored on this device, so Today,
+        Corrections, Schedule and Review still work without a connection.
+      </p>
+      <a href="/">Go to Today</a>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Corrective — design tokens
+
+   Translated from the Buckwheat (danilkinkin) visual language:
+   - tonal, low-contrast surfaces blended toward the background rather than
+     stacked with shadows
+   - a single warm accent derived from the #CC4C08 seed
+   - the M3 shape scale: 4 / 8 / 12 / 16 / 28
+   - Manrope carried at heavy weights at compact sizes
+   ========================================================================== */
+
+:root {
+  /* surfaces — warm-tinted neutrals, never pure white */
+  --bg: #fff8f4;
+  --surface: #f7ebe3;
+  --surface-high: #f0e3da;
+  --elevated: #ffffff;
+  --scrim: 31 24 19;
+
+  /* text */
+  --text: #1f1813;
+  --text-secondary: #574840;
+  --text-muted: #8a776c;
+
+  /* lines */
+  --border: #e8dad0;
+  --border-strong: #d3c2b6;
+
+  /* accent — seed #CC4C08 at tone 40 */
+  --accent: #a8450a;
+  --accent-fg: #ffffff;
+  --accent-soft: #ffdcc9;
+  --accent-on-soft: #3a1200;
+
+  /* semantic — from colorGood / colorNotGood / colorBad */
+  --success: #3d8f10;
+  --success-soft: #dcf0cd;
+  --warning: #9a6600;
+  --warning-soft: #fbeaC4;
+  --error: #bf1212;
+  --error-soft: #ffdcd6;
+
+  /* Chart marks get their own step rather than reusing --accent: the accent
+     is tuned for text and fills on a surface, and a bar needs a validated
+     lightness/chroma against the chart surface in each mode. Both values
+     pass the palette validator (lightness band, chroma floor, contrast). */
+  --chart-bar: #a8450a;
+  --chart-grid: #d3c2b6;
+
+  /* shape scale */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 28px;
+}
+
+/* Dark mode is a distinct tonal scheme, not an inversion: warm near-black
+   backgrounds, surfaces that step up in tone, and a lighter accent. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15100d;
+    --surface: #221c18;
+    --surface-high: #2c251f;
+    --elevated: #362e28;
+    --scrim: 0 0 0;
+
+    --text: #f0e2d9;
+    --text-secondary: #c3b3a8;
+    --text-muted: #8e7d73;
+
+    --border: #362e29;
+    --border-strong: #4c423b;
+
+    --accent: #ffb68f;
+    --accent-fg: #4a1800;
+    --accent-soft: #6b2800;
+    --accent-on-soft: #ffdcc9;
+
+    --success: #86d257;
+    --success-soft: #27400f;
+    --warning: #ffcf5c;
+    --warning-soft: #432f00;
+    --error: #ff8a7d;
+    --error-soft: #4f1310;
+
+    --chart-bar: #d4752e;
+    --chart-grid: #4c423b;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #15100d;
+  --surface: #221c18;
+  --surface-high: #2c251f;
+  --elevated: #362e28;
+  --scrim: 0 0 0;
+
+  --text: #f0e2d9;
+  --text-secondary: #c3b3a8;
+  --text-muted: #8e7d73;
+
+  --border: #362e29;
+  --border-strong: #4c423b;
+
+  --accent: #ffb68f;
+  --accent-fg: #4a1800;
+  --accent-soft: #6b2800;
+  --accent-on-soft: #ffdcc9;
+
+  --success: #86d257;
+  --success-soft: #27400f;
+  --warning: #ffcf5c;
+  --warning-soft: #432f00;
+  --error: #ff8a7d;
+  --error-soft: #4f1310;
+
+  --chart-bar: #d4752e;
+  --chart-grid: #4c423b;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-high: var(--surface-high);
+  --color-elevated: var(--elevated);
+
+  --color-text: var(--text);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-on-soft: var(--accent-on-soft);
+
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-error: var(--error);
+  --color-error-soft: var(--error-soft);
+
+  --color-chart-bar: var(--chart-bar);
+  --color-chart-grid: var(--chart-grid);
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+}
+
+@custom-variant dark {
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme="light"]) *, :root:not([data-theme="light"])) {
+      @slot;
+    }
+  }
+  &:where(:root[data-theme="dark"] *, :root[data-theme="dark"]) {
+    @slot;
+  }
+}
+
+/* No `* { border-color }` reset here.
+
+   Tailwind v4 emits utilities into the `utilities` cascade layer, and rules
+   written in this file land unlayered — which beats every layer regardless of
+   specificity. A bare `*` selector would therefore silently win over
+   `border-accent`, `border-l-success` and every other border colour in the
+   app. Each border names its own colour instead. */
+@layer base {
+  html {
+    background: var(--bg);
+    -webkit-tap-highlight-color: transparent;
+    /* keep the scheduler's horizontal rails from bouncing the page */
+    overscroll-behavior-y: none;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+    /* Buckwheat sets body copy at weight 700; everything reads as deliberate */
+    font-weight: 600;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* Numbers must align in columns — times, counts, rates all sit in tables */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Focus: visible for keyboards, absent for touch */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Hide scrollbars on the horizontal rails without losing the scroll */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
