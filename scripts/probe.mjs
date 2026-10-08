@@ -6,7 +6,7 @@
  * page and prints the result, optionally writing a screenshot.
  *
  *   node scripts/probe.mjs <url> [--w 390] [--h 844] [--shot out.png]
- *                                [--eval "expr"] [--wait 2500] [--full] [--dark] [--offline] [--then url] [--storage file.json]
+ *                                [--eval "expr"] [--wait 2500] [--full] [--dark] [--offline] [--then url] [--storage file.json] [--slow]
  */
 import { spawn } from "node:child_process";
 import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
@@ -153,6 +153,18 @@ try {
 
   // Load once to populate the service worker caches, then cut the network and
   // reload: the only honest way to check an offline claim.
+  // Throttle, to reproduce what a phone on a real network sees. A fast local
+  // connection hides loading states entirely.
+  if (has("slow")) {
+    await cmd("Network.enable");
+    await cmd("Network.emulateNetworkConditions", {
+      offline: false,
+      latency: 400,
+      downloadThroughput: (400 * 1024) / 8,
+      uploadThroughput: (400 * 1024) / 8,
+    });
+  }
+
   if (has("offline")) {
     await cmd("Network.enable");
     await cmd("Network.emulateNetworkConditions", {

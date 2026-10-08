@@ -75,7 +75,9 @@ export function SpendEditor({
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    // The pad is a thumb control. Left to itself it stretches to the full
+    // content column on a desktop, which turned the keys into dinner plates.
+    <div className="flex w-full max-w-[380px] flex-col gap-4">
       {/* ------------------------------------------------------ the figure */}
       <div className="flex min-h-[128px] flex-1 items-center justify-end gap-1.5 px-1">
         <span

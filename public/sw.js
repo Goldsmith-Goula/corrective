@@ -13,7 +13,10 @@
  * not known here, and a stale precache is worse than a cold fetch.
  */
 
-const VERSION = "v4";
+// Taken from the registration URL (/sw.js?v=<build>), so every deploy gets
+// its own caches and `activate` clears the previous build's.
+const VERSION =
+  new URL(self.location.href).searchParams.get("v") || "fallback";
 const SHELL = `corrective-shell-${VERSION}`;
 const ASSETS = `corrective-assets-${VERSION}`;
 const OFFLINE_URL = "/offline.html";

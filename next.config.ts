@@ -25,6 +25,17 @@ function localNetworkOrigins() {
 
 const nextConfig: NextConfig = {
   allowedDevOrigins: localNetworkOrigins(),
+  env: {
+    /**
+     * Changes on every build.
+     *
+     * The service worker is registered at `/sw.js?v=<this>`, so each deploy is
+     * a different script URL and therefore a different registration. Without
+     * it, sw.js is byte-identical between deploys, no update ever fires, and
+     * the caches from an older build live on indefinitely.
+     */
+    NEXT_PUBLIC_SW_VERSION: String(Date.now()),
+  },
   turbopack: {
     rules: {
       "*.css": {

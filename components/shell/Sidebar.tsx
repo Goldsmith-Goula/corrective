@@ -36,11 +36,14 @@ export function SidebarShell({
 
       <button
         onClick={onCapture}
-        className="mb-5 flex h-10 items-center gap-2 rounded-full bg-accent px-3.5 text-[16px] font-extrabold text-accent-fg transition-[filter] hover:brightness-[1.06]"
+        // "Capture a problem" plus the shortcut hint overran the 236px rail.
+        // The plus sign already says "add"; the noun is the only word needed.
+        className="mb-5 flex h-11 items-center gap-2 rounded-full bg-accent px-4 text-[16px] font-extrabold text-accent-fg transition-[filter] hover:brightness-[1.06]"
+        title="Capture a problem"
       >
-        <Plus size={16} strokeWidth={3} />
-        Capture a problem
-        <kbd className="ml-auto rounded bg-black/15 px-1.5 py-0.5 text-[10px] font-bold tracking-wide">
+        <Plus size={17} strokeWidth={3} />
+        Problem
+        <kbd className="ml-auto rounded bg-black/15 px-1.5 py-0.5 text-[11px] font-bold tracking-wide">
           C
         </kbd>
       </button>

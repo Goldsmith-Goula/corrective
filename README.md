@@ -10,6 +10,9 @@ behaviour actually happened, and whether the problem it targets got smaller.
 > Thinking about changing is not changing.
 > Writing a corrective measure is not executing it.
 
+**[Try it → corrective-phi.vercel.app](https://corrective-phi.vercel.app/)**
+— installable from the browser menu on Android and iOS.
+
 It also contains a full daily-budget tracker, ported from
 [Buckwheat](https://github.com/danilkinkin/buckwheat) — because the money a
 problem costs you is often the clearest evidence that it is a problem.
@@ -184,8 +187,15 @@ JavaScript. Without that, the page loads and then hangs on its skeleton,
 because only the HTML gets through.
 
 Note that a service worker will not register over plain `http://` on a bare IP,
-so installing the PWA from a LAN address will not work — that needs HTTPS or a
-tunnel.
+so installing the PWA from a LAN address will not work. Install from the
+[deployed site](https://corrective-phi.vercel.app/) instead, which is served
+over HTTPS.
+
+The worker is registered at `/sw.js?v=<build>` so every deploy is a distinct
+registration. Without that, `sw.js` is byte-identical between builds, no update
+ever fires, and an old build's caches live on — which shows up as a page that
+stays blank until you refresh by hand. A new worker taking control now reloads
+the page once, so that heals itself.
 
 ---
 
