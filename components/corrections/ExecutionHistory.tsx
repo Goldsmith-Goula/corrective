@@ -72,12 +72,12 @@ export function ExecutionHistory({
                     )}
                   </span>
                   {e.result && (
-                    <span className="mt-1.5 block text-[14px] leading-snug font-semibold text-text-secondary break-words">
+                    <span className="mt-1.5 block truncate text-[14px] leading-snug font-semibold text-text-secondary">
                       {e.result}
                     </span>
                   )}
                   {e.note && !e.result && (
-                    <span className="mt-1.5 block text-[14px] leading-snug font-semibold text-text-muted break-words">
+                    <span className="mt-1.5 block truncate text-[14px] leading-snug font-semibold text-text-muted">
                       {e.note}
                     </span>
                   )}

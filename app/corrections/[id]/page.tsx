@@ -126,7 +126,7 @@ export default function CorrectionDetailPage() {
 
       <div className="grid gap-6 pb-4 md:grid-cols-[minmax(0,1fr)_300px] md:gap-8 md:pt-2">
         {/* ---------------------------------------------- the causal chain */}
-        <div className="space-y-6">
+        <div className="min-w-0 space-y-6">
           <motion.div layout transition={springSoft}>
             <CausalChain correction={correction} />
           </motion.div>
@@ -152,7 +152,7 @@ export default function CorrectionDetailPage() {
                         <span className="flex items-baseline gap-2">
                           <span
                             className={cn(
-                              "tnum text-[20px] leading-none font-black tracking-[-0.02em]",
+                              "tnum shrink-0 text-[20px] leading-none font-black tracking-[-0.02em]",
                               schedule.active
                                 ? "text-accent-on-soft"
                                 : "text-text-muted",
@@ -173,7 +173,7 @@ export default function CorrectionDetailPage() {
                         </span>
                         <span
                           className={cn(
-                            "mt-1 block text-[14px] font-bold",
+                            "mt-1 block truncate text-[14px] font-bold",
                             schedule.active
                               ? "text-accent-on-soft/75"
                               : "text-text-muted",
@@ -260,7 +260,7 @@ export default function CorrectionDetailPage() {
         </div>
 
         {/* ------------------------------------------------------ evidence */}
-        <div className="space-y-6">
+        <div className="min-w-0 space-y-6">
           <Section label="Execution">
             <Card className="px-3.5 py-4">
               <div className="flex items-start justify-between gap-4">
@@ -323,7 +323,7 @@ export default function CorrectionDetailPage() {
               className="flex w-full items-center gap-3 rounded-2xl bg-surface px-3.5 py-3 text-left transition-colors hover:bg-surface-high"
             >
               <CorrectionStatusPill status={correction.status} />
-              <span className="min-w-0 flex-1 text-[14px] font-semibold text-text-muted">
+              <span className="min-w-0 flex-1 truncate text-[14px] font-semibold text-text-muted">
                 {stats.next
                   ? `Next ${formatRelativeDay(stats.next.date)} · ${stats.next.time}`
                   : "No upcoming action"}
@@ -334,7 +334,7 @@ export default function CorrectionDetailPage() {
         </div>
 
         {/* ---------------------------------------- history, full width */}
-        <div className="space-y-6 md:col-span-2">
+        <div className="min-w-0 space-y-6 md:col-span-2">
           <Divider />
           <Section label="Execution history">
             <ExecutionHistory executions={executions} metric={correction.metric} />
