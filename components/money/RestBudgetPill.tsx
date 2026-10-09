@@ -54,7 +54,7 @@ export function RestBudgetPill({ state }: { state: BudgetState }) {
       <div className="relative flex h-full items-center justify-between gap-3 px-5">
         <span
           className={cn(
-            "text-[17px] font-extrabold",
+            "min-w-0 truncate text-[17px] font-extrabold",
             overspent ? "text-error" : "text-text",
           )}
         >
@@ -62,7 +62,7 @@ export function RestBudgetPill({ state }: { state: BudgetState }) {
         </span>
         <span
           className={cn(
-            "tnum text-[22px] leading-none font-black tracking-[-0.02em]",
+            "tnum shrink-0 text-[22px] leading-none font-black tracking-[-0.02em]",
             overspent ? "text-error" : "text-text",
           )}
         >

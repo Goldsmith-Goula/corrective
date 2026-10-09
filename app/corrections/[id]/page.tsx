@@ -238,7 +238,7 @@ export default function CorrectionDetailPage() {
 
           <Section label="Measurement">
             <Card className="px-3.5 py-3">
-              <p className="text-[16px] leading-relaxed font-bold">
+              <p className="text-[16px] leading-relaxed font-bold break-words">
                 {correction.measurement || (
                   <span className="text-text-muted italic">
                     No measurement defined. Without one, completion is an
@@ -288,7 +288,7 @@ export default function CorrectionDetailPage() {
 
               {recent.length > 0 && <RunMeter statuses={recent} className="mt-4" />}
 
-              <p className="mt-3.5 text-[14px] leading-relaxed font-semibold text-text-secondary">
+              <p className="mt-3.5 text-[14px] leading-relaxed font-semibold text-text-secondary break-words">
                 {evidenceLine(stats, primary?.label ?? "This correction")}
               </p>
 

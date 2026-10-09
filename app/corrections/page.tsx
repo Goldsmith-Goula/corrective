@@ -114,7 +114,7 @@ export default function CorrectionsPage() {
                     transition={springSoft}
                     className="rounded-2xl border border-dashed border-border px-3.5 py-3"
                   >
-                    <p className="text-[16px] leading-snug font-bold text-text">
+                    <p className="text-[16px] leading-snug font-bold text-text break-words">
                       {capture.text}
                     </p>
                     <div className="mt-2.5 flex items-center gap-2">

@@ -40,7 +40,7 @@ export function EmptyState({
       )}
       <p className="text-[17px] font-extrabold text-text">{title}</p>
       {body && (
-        <p className="mt-1 max-w-[30ch] text-[15px] font-semibold leading-relaxed text-text-muted">
+        <p className="mt-1 max-w-md text-[15px] font-semibold leading-relaxed text-text-muted break-words">
           {body}
         </p>
       )}

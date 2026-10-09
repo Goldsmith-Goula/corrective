@@ -51,7 +51,7 @@ export function ReviewMetric({
           )}
         >
           <div className="flex items-start gap-2">
-            <p className="min-w-0 flex-1 text-[16px] leading-snug font-extrabold tracking-[-0.01em]">
+            <p className="min-w-0 flex-1 text-[16px] leading-snug font-extrabold tracking-[-0.01em] break-words">
               {stats.correction.problem}
             </p>
             <ArrowUpRight
@@ -61,7 +61,7 @@ export function ReviewMetric({
             />
           </div>
 
-          <p className="mt-2 text-[14px] leading-relaxed font-semibold text-text-secondary">
+          <p className="mt-2 text-[14px] leading-relaxed font-semibold text-text-secondary break-words">
             {evidenceLine(stats, actionLabel ?? "This correction")}
           </p>
 
@@ -102,7 +102,7 @@ export function SummaryMetric({
         {label}
       </p>
       {sub && (
-        <p className="mt-0.5 text-[13px] font-semibold text-text-secondary">
+        <p className="mt-0.5 text-[13px] font-semibold text-text-secondary break-words">
           {sub}
         </p>
       )}

@@ -140,11 +140,11 @@ export function CompletionControl({
             what keeps the answer objective. */}
         <div className="rounded-xl bg-surface px-3.5 py-3">
           <Label>Measurement</Label>
-          <p className="mt-1 text-[16px] leading-snug font-bold text-text">
+          <p className="mt-1 text-[16px] leading-snug font-bold text-text break-words">
             {action.correction.measurement}
           </p>
           {metric && describeTarget(metric) && (
-            <p className="mt-1 text-[14px] font-bold text-text-muted">
+            <p className="mt-1 text-[14px] font-bold text-text-muted break-words">
               Target: {describeTarget(metric)}
             </p>
           )}

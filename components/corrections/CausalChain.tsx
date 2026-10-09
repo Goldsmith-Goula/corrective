@@ -89,7 +89,7 @@ export function CausalChain({ correction }: { correction: Correction }) {
               </p>
               <p
                 className={cn(
-                  "mt-1 leading-relaxed",
+                  "mt-1 leading-relaxed break-words",
                   node.pivot
                     ? "text-[18px] font-extrabold tracking-[-0.01em] text-text"
                     : "text-[16px] font-semibold text-text-secondary",

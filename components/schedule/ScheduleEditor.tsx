@@ -183,7 +183,7 @@ export function ScheduleEditor({
           {/* The commitment, stated back in words. */}
           <div className="rounded-2xl bg-accent-soft px-3.5 py-3">
             <Label className="text-accent-on-soft/70">This becomes</Label>
-            <p className="mt-1 text-[16px] leading-snug font-extrabold text-accent-on-soft">
+            <p className="mt-1 text-[16px] leading-snug font-extrabold text-accent-on-soft break-words">
               {label} — {describeRecurrence(draft.recurrence, draft.startTime)}
             </p>
             {anchored && (

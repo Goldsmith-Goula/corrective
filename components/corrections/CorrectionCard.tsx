@@ -48,7 +48,7 @@ export function CorrectionCard({
           className="rounded-2xl bg-surface px-3.5 py-3.5 transition-colors hover:bg-surface-high"
         >
           <div className="flex items-start gap-3">
-            <h3 className="min-w-0 flex-1 text-[17px] leading-snug font-extrabold tracking-[-0.01em]">
+            <h3 className="min-w-0 flex-1 text-[17px] leading-snug font-extrabold tracking-[-0.01em] break-words">
               {correction.problem}
             </h3>
             <CorrectionStatusPill status={correction.status} size="sm" />
@@ -58,7 +58,7 @@ export function CorrectionCard({
             <RunMeter statuses={recent} size="sm" className="mt-3 max-w-[180px]" />
           )}
 
-          <div className="mt-2.5 flex items-center gap-2 text-[14px] font-bold">
+          <div className="mt-2.5 flex flex-wrap items-center gap-2 text-[14px] font-bold">
             <span className="tnum text-text-secondary">
               {stats.completed} / {stats.attempted} completed
             </span>

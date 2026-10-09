@@ -99,7 +99,7 @@ export function ActionRow({
           <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <span
               className={cn(
-                "text-[18px] leading-tight font-extrabold tracking-[-0.01em]",
+                "text-[18px] leading-tight font-extrabold tracking-[-0.01em] break-words",
                 settled && "text-text-secondary",
               )}
             >
@@ -120,7 +120,7 @@ export function ActionRow({
                 initial={{ opacity: 0, y: -4 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={fade}
-                className="mt-2 flex items-center gap-1.5"
+                className="mt-2 flex flex-wrap items-center gap-1.5"
               >
                 <SettledLine
                   status={exec.status}
@@ -156,20 +156,20 @@ export function ActionRow({
             <div className="mx-3.5 mb-3 space-y-3 rounded-xl bg-bg/55 px-3.5 py-3">
               <div>
                 <Label>Problem</Label>
-                <p className="mt-1 text-[15px] leading-snug font-bold text-text">
+                <p className="mt-1 text-[15px] leading-snug font-bold text-text break-words">
                   {action.correction.problem}
                 </p>
               </div>
               <div>
                 <Label>Measurement</Label>
-                <p className="mt-1 text-[15px] leading-snug font-semibold text-text-secondary">
+                <p className="mt-1 text-[15px] leading-snug font-semibold text-text-secondary break-words">
                   {action.correction.measurement}
                 </p>
               </div>
               {exec?.result && (
                 <div>
                   <Label>Result recorded</Label>
-                  <p className="mt-1 text-[15px] leading-relaxed font-semibold text-text-secondary">
+                  <p className="mt-1 text-[15px] leading-relaxed font-semibold text-text-secondary break-words">
                     {exec.result}
                   </p>
                 </div>

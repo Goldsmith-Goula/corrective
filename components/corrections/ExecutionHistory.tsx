@@ -72,12 +72,12 @@ export function ExecutionHistory({
                     )}
                   </span>
                   {e.result && (
-                    <span className="mt-1.5 block text-[14px] leading-snug font-semibold text-text-secondary">
+                    <span className="mt-1.5 block text-[14px] leading-snug font-semibold text-text-secondary break-words">
                       {e.result}
                     </span>
                   )}
                   {e.note && !e.result && (
-                    <span className="mt-1.5 block text-[14px] leading-snug font-semibold text-text-muted">
+                    <span className="mt-1.5 block text-[14px] leading-snug font-semibold text-text-muted break-words">
                       {e.note}
                     </span>
                   )}
@@ -137,7 +137,7 @@ export function ResultEntries({ executions }: { executions: Execution[] }) {
             </span>
             <ExecutionBadge status={e.status} />
           </div>
-          <p className="mt-1.5 text-[16px] leading-relaxed font-semibold text-text">
+          <p className="mt-1.5 text-[16px] leading-relaxed font-semibold text-text break-words">
             {e.result}
           </p>
         </li>

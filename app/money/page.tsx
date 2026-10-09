@@ -138,7 +138,7 @@ export default function MoneyPage() {
               strokeWidth={2.5}
               className="shrink-0 text-accent"
             />
-            <span className="min-w-0 flex-1 text-[15px] font-semibold text-text-secondary">
+            <span className="min-w-0 flex-1 text-[15px] font-semibold text-text-secondary break-words">
               {money(fromCorrections.reduce((n, s) => n + s.amount, 0))} of this
               came from corrections you measure in {view.budget.currency}.
             </span>

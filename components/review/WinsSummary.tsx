@@ -85,10 +85,10 @@ export function WinsSummary({
 
       {latest && (
         <div className="mt-4 border-t border-border pt-3.5">
-          <p className="text-[15px] leading-relaxed font-semibold text-text-secondary">
+          <p className="text-[15px] leading-relaxed font-semibold text-text-secondary break-words">
             &ldquo;{latest.result}&rdquo;
           </p>
-          <p className="mt-1.5 text-[14px] font-bold text-text-muted">
+          <p className="mt-1.5 text-[14px] font-bold text-text-muted break-words">
             {byId.get(latest.correctionId)?.correction ?? ""}
             {" · "}
             {formatRelativeDay(latest.date)}

@@ -29,13 +29,13 @@ export function PageHeader({
     // owns the space under itself.
     <header className={cn("pb-5 md:pb-6", className)}>
       <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           {eyebrow && (
-            <p className="text-[13px] font-extrabold text-text-muted">
+            <p className="text-[13px] font-extrabold text-text-muted break-words">
               {eyebrow}
             </p>
           )}
-          <h1 className="mt-1 text-[30px] leading-[1.1] font-black tracking-[-0.025em] md:text-[34px]">
+          <h1 className="mt-1 text-[30px] leading-[1.1] font-black tracking-[-0.025em] break-words md:text-[34px]">
             {title}
           </h1>
         </div>

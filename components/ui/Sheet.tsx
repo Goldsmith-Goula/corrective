@@ -99,7 +99,7 @@ export function Sheet({
               <div className="flex shrink-0 items-start gap-3 px-5 pt-3 pb-2 md:pt-5">
                 <div className="min-w-0 flex-1">
                   {title && (
-                    <h2 className="text-[22px] leading-tight font-extrabold tracking-[-0.01em]">
+                    <h2 className="text-[22px] leading-tight font-extrabold tracking-[-0.01em] break-words">
                       {title}
                     </h2>
                   )}
@@ -164,7 +164,7 @@ export function Confirm({
   return (
     <Sheet open={open} onClose={onClose} title={title} className="md:max-w-sm">
       {body && (
-        <p className="text-[16px] leading-relaxed font-semibold text-text-secondary">
+        <p className="text-[16px] leading-relaxed font-semibold text-text-secondary break-words">
           {body}
         </p>
       )}
